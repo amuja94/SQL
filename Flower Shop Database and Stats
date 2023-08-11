@@ -1,0 +1,26 @@
+--Create a flower shop database
+
+CREATE TABLE flowers (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, quantity INTEGER, quality TEXT);
+
+INSERT INTO flowers VALUES (1, "Roses", 92, 144, "good");
+INSERT INTO flowers VALUES (2, "Petunias", 58, 200, "okay");
+INSERT INTO flowers VALUES (3, "Lilacs", 75, 5, "good");
+INSERT INTO flowers VALUES (4, "Lilys", 64, 120, "okay");
+INSERT INTO flowers VALUES (5, "Peonies", 90, 20, "good");
+INSERT INTO flowers VALUES (6, "Tulips", 84, 105, "okay");
+INSERT INTO flowers VALUES (7, "Hydrangeas", 67, 102, "good");
+INSERT INTO flowers VALUES (8, "Daises", 56, 100, "good");
+INSERT INTO flowers VALUES (9, "Carnations", 45, 120, "okay");
+INSERT INTO flowers VALUES (10, "Orchids", 85, 95, "good");
+INSERT INTO flowers VALUES (11, "Dahlias", 60, 100, "good");
+INSERT INTO flowers VALUES (12, "Daffodils", 88, 103, "good");
+INSERT INTO flowers VALUES (13, "Iris", 75, 120, "okay");
+INSERT INTO flowers VALUES (14, "Sunflowers", 92, 20, "okay");
+INSERT INTO flowers VALUES (15, "Freesias", 90, 30, "good");
+
+--display the flowers where the quantity is over 100 and order by price.
+SELECT * FROM flowers WHERE quantity >= 100
+ORDER BY price asc;
+
+--display which flowers are labeled good in quality.
+SELECT * FROM flowers WHERE quality = "good";
