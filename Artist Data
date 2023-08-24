@@ -1,0 +1,42 @@
+CREATE TABLE artists (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT,
+    birth_year INTEGER,
+    birth_city TEXT);
+    
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Michael Jackson", 1958, "Gary");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Prince", 1958, "Minneapolis");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Madonna", 1958, "Bay City");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Sade", 1959, "Ibadan");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Tina Turner", 1939, "Brownsville");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("David Bowie", 1947, "London");
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist_id INTEGER,
+    title TEXT,
+    release_year INTEGER);
+    
+INSERT INTO songs (artist_id, title, release_year) VALUES (1, "Billie Jean", 1982);
+INSERT INTO songs (artist_id, title, release_year) VALUES (1, "Man in The Mirror", 1988);
+INSERT INTO songs (artist_id, title, release_year) VALUES (2, "Purple Rain", 1984);
+INSERT INTO songs (artist_id, title, release_year) VALUES (2, "Raspberry Beret", 1985);
+INSERT INTO songs (artist_id, title, release_year) VALUES (3, "La Isla Bonita", 1986);
+INSERT INTO songs (artist_id, title, release_year) VALUES (3, "Like A Prayer", 1989);
+INSERT INTO songs (artist_id, title, release_year) VALUES (4, "Smooth Operator", 1984);
+INSERT INTO songs (artist_id, title, release_year) VALUES (4,"No Ordinary Love", 1992);
+INSERT INTO songs (artist_id, title, release_year) VALUES (5, "What's Love Got to Do With It", 1984);
+INSERT INTO songs (artist_id, title, release_year) VALUES (5, "The Best", 1989);
+INSERT INTO songs (artist_id, title, release_year) VALUES (6, "Space Oddity", 1969);
+INSERT INTO songs (artist_id, title, release_year) VALUES (6, "Fame", 1975);
+
+--Display a table showing artists name's with their songs
+
+SELECT songs.title, artists.full_name
+FROM artists
+JOIN songs
+
+ON artists.id = songs.artist_id;
+
+--Display a table showing artists name's with their birth year and place of birth
+
+SELECT artists.full_name, artists.birth_year, artists.birth_city
+FROM artists;
