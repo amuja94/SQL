@@ -1,0 +1,28 @@
+#In this project, I demonstrate my knowledge on updating and deleting data from a dataset
+
+CREATE TABLE books (id INTEGER PRIMARY KEY,
+title TEXT,
+author TEXT,
+date_of_publication INTEGER,
+number_of_pages INTEGER);
+
+INSERT INTO books (title, author, date_of_publication, number_of_pages) 
+    VALUES ("Swan's Way", "Marcel Proust", 1913, 512);
+INSERT INTO books (title, author, date_of_publication, number_of_pages)
+    VALUES ("The Prisoner", "Marcel Proust", 1923, 448); 
+INSERT INTO books (title, author, date_of_publication, number_of_pages)
+    VALUES ("The Grand Inquisitor", "Fyodor Dostoevsky", 1880, 46);
+INSERT INTO books (title, author, date_of_publication, number_of_pages)
+    VALUES ("The Possessed", "Fyodor Dostoevsky", 1872, 676);
+INSERT INTO books (title, author, date_of_publication, number_of_pages)
+ VALUES ("It Didn't Start With You", "Mark Wolynn", 2016, 219);
+    
+#1. Demonstrate how to edit the data with incorrect spelling of the data:
+
+UPDATE books SET title = "Swann's Way"
+WHERE id = 1;
+
+#2. Demonstrate how to remove data that does not belong in the dataset:
+
+DELETE FROM books
+WHERE title = "It Didn't Start With You";
