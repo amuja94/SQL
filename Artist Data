@@ -3,40 +3,41 @@ CREATE TABLE artists (id INTEGER PRIMARY KEY AUTOINCREMENT,
     birth_year INTEGER,
     birth_city TEXT);
     
-INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Michael Jackson", 1958, "Gary");
-INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Prince", 1958, "Minneapolis");
-INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Madonna", 1958, "Bay City");
-INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Sade", 1959, "Ibadan");
-INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Tina Turner", 1939, "Brownsville");
-INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("David Bowie", 1947, "London");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Leonardo da Vinci", 1452, "Vinci");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Sandro Boticelli", 1445, "Florence");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Michelangelo", 1475, "Caprese");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Pierre August Renoir", 1841, "Limoges");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Claude Monet", 1840, "Paris");
+INSERT INTO artists (full_name, birth_year, birth_city) VALUES ("Raphael", 1483, "Urbino");
 
-CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE paintings (id INTEGER PRIMARY KEY AUTOINCREMENT,
     artist_id INTEGER,
     title TEXT,
-    release_year INTEGER);
+    medium TEXT,
+    year_created INTEGER);
     
-INSERT INTO songs (artist_id, title, release_year) VALUES (1, "Billie Jean", 1982);
-INSERT INTO songs (artist_id, title, release_year) VALUES (1, "Man in The Mirror", 1988);
-INSERT INTO songs (artist_id, title, release_year) VALUES (2, "Purple Rain", 1984);
-INSERT INTO songs (artist_id, title, release_year) VALUES (2, "Raspberry Beret", 1985);
-INSERT INTO songs (artist_id, title, release_year) VALUES (3, "La Isla Bonita", 1986);
-INSERT INTO songs (artist_id, title, release_year) VALUES (3, "Like A Prayer", 1989);
-INSERT INTO songs (artist_id, title, release_year) VALUES (4, "Smooth Operator", 1984);
-INSERT INTO songs (artist_id, title, release_year) VALUES (4,"No Ordinary Love", 1992);
-INSERT INTO songs (artist_id, title, release_year) VALUES (5, "What's Love Got to Do With It", 1984);
-INSERT INTO songs (artist_id, title, release_year) VALUES (5, "The Best", 1989);
-INSERT INTO songs (artist_id, title, release_year) VALUES (6, "Space Oddity", 1969);
-INSERT INTO songs (artist_id, title, release_year) VALUES (6, "Fame", 1975);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (1, "Mona Lisa", "Oil", 1503);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (1, "The Last Supper", "Tempera", 1495);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (2, "The Birth of Venus", "Tempera", 1485);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (2, "Primavera", NULL, 1475);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (3, "Creation of Adam", "Oil", 1508);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (3, "Sistine Chapel Ceiling", "Gold", 1508);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (4, "Ball du Moulin de la Galette", "Oil", 1876);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (4, "Luncheon on The Boating Party", "Oil", 1880);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (5, "Impression Sunrise", "Oil", 1872);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (5, "Water Lillies", "Oil", 1840);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (6, "School of Athens", "Oil", 1509);
+INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (6, "The Triumph of Galatea", NULL, 1514);
 
---Display a table showing artists name's with their songs
+#1.Display a table showing artists name's with their paintings.
 
-SELECT songs.title, artists.full_name
+SELECT paintings.title, artists.full_name
 FROM artists
-JOIN songs
+JOIN paintings
 
-ON artists.id = songs.artist_id;
+ON artists.id = paintings.artist_id;
 
---Display a table showing artists name's with their birth year and place of birth
+#2.Display a table showing artists name's with their birth year and place of birth
 
 SELECT artists.full_name, artists.birth_year, artists.birth_city
 FROM artists;
