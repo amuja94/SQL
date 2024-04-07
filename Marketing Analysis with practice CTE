@@ -1,0 +1,59 @@
+#Marketing Analysis of a sustainable clothing line
+
+#1 How many transactions were completed during each marketing campaign?
+
+SELECT m.campaign_id, COUNT (t.transaction_id) AS num_transactions
+FROM marketing_campaigns m
+JOIN transactions t
+ON m.product_id = t.product_id
+GROUP BY m.campaign_id
+ORDER BY num_transactions DESC;
+
+#2 Which product had the highest sales quantity?
+
+SELECT s.product_name, SUM(t.quantity) AS sales_quantity
+FROM sustainable_clothing s 
+JOIN transactions t
+ON s.product_id = t.product_id
+GROUP BY s.product_name
+ORDER BY sales_quantity DESC
+LIMIT 1;
+
+#3 What is the total revenue generated from each marketing campaign?
+
+SELECT m.campaign_name, ROUND(SUM(t.quantity*s.price), 2) AS total_revenue
+FROM marketing_campaigns m
+JOIN transactions t
+ON m.product_id = t.product_id
+JOIN sustainable_clothing s
+ON s.product_id =t.product_id
+GROUP BY m.campaign_name
+ORDER BY total_revenue DESC;
+
+#4 What is the top-selling product category based on the total revenue generated?
+
+SELECT s.category, ROUND(SUM(s*.price*t.quantity), 2) AS total_revenue
+FROM sustainable_clothing s
+JOIN transactions t
+ON s.product_id = t.product_id
+GROUP BY s.category
+ORDER BY total_revenue DESC
+LIMIT 1;
+
+#5 Which products had a higher quantity sold compared to the average quantity sold?
+
+WITH cte1 AS(
+SELECT s.product_name, SUM(t.quantity) AS sales_quantity, AVG(t.quantity) AS avg_quantity
+FROM sustainable_clothing s
+JOIN transactions t
+ON s.product_id = t.product_id
+GROUP BY s.product_name
+HAVING sales_quantity > avg_quantity
+ORDER BY sales_quantity DESC)
+SELECT product_name, sales_quantity
+FROM cte1;
+
+#By using SQL, I was able to analyze the data and determine that this company had a successful summer campaign. The company can utilize this information by using the same strategies
+of their summer sale, and use that on all other sales. This would increase their yearly revenue.
+In addition, the number one product is continuously their organic cotton sweater. It is obvious their customers appreciate the fabric, and the company can use this information to make 
+more clothing made of the fabric, or provide more options for sweaters.
