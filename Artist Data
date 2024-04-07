@@ -1,4 +1,5 @@
 CREATE TABLE artists (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist_id INTEGER
     full_name TEXT,
     birth_year INTEGER,
     birth_city TEXT);
@@ -31,11 +32,10 @@ INSERT INTO paintings (artist_id, title, medium, year_created) VALUES (6, "The T
 
 #1.Display a table showing artists name's with their paintings.
 
-SELECT paintings.title, artists.full_name
-FROM artists
-JOIN paintings
-
-ON artists.id = paintings.artist_id;
+SELECT p.title, a.full_name
+FROM artists a
+JOIN paintings p
+ON a.artist_id = p.artist_id;
 
 #2.Display a table showing artists name's with their birth year and place of birth
 
